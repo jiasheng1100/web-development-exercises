@@ -1,0 +1,15 @@
+note over browser:
+the eventhandler of submit button
+in js file creates a new note with 
+input data, adds it to the notes 
+list and renders notes list on page
+end note 
+
+note over browser:
+browser sends the new note as 
+JSON-data to server via 
+POST-request
+end note 
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
