@@ -6,18 +6,22 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
+const Part = (props) => {
   return (
     <div>
       <p>
-        {props.pa1} {props.ex1}
+        {props.pa} {props.ex}
       </p>
-      <p>
-        {props.pa2} {props.ex2}
-      </p>
-      <p>
-        {props.pa3} {props.ex3}
-      </p>
+    </div>
+  )
+}
+
+const Content = (props) => {
+  return (
+    <div>
+      <Part pa={props.pa1} ex={props.ex1}/>
+      <Part pa={props.pa2} ex={props.ex2}/>
+      <Part pa={props.pa3} ex={props.ex3}/>
     </div>
   )
 }
