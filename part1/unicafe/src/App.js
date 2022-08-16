@@ -10,6 +10,8 @@ const Button = (props) => (
 
 const Count = ({ text, value }) => <div>{text} {value}</div>
 
+const Positive = ({ value }) => <div>positive {(value[0]/(value[0]+value[1]+value[2]))*100} %</div>
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -26,6 +28,9 @@ const App = () => {
       <Count text={"good"} value={good} />
       <Count text={"neutral"} value={neutral} />
       <Count text={"bad"} value={bad} />
+      <Count text={"average"} value={(good-bad)/(good+neutral+bad)} />
+      <Positive value={[good, neutral, bad]} />
+      
     </div>
   )
 }
