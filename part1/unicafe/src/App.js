@@ -8,9 +8,16 @@ const Button = (props) => (
   </button>
 )
 
-const Count = ({ text, value }) => <div>{text} {value}</div>
-
-const Positive = ({good, neutral, bad}) => <div>positive {(good/(good+neutral+bad))*100} %</div>
+const StatisticLine = ({ text, value }) => {
+  if (text==="positive"){
+    return(
+      <div>{text} {value} %</div>
+    )
+  }
+  return(
+    <div>{text} {value}</div>
+  )
+}
 
 const Statistics = ({ good, neutral, bad }) => {
   if (good===0 && neutral===0 && bad===0){
@@ -21,15 +28,14 @@ const Statistics = ({ good, neutral, bad }) => {
       </div>
     )
   }
-
   return(  
     <div>
       <Header header={"statistics"} />
-      <Count text={"good"} value={good} />
-      <Count text={"neutral"} value={neutral} />
-      <Count text={"bad"} value={bad} />
-      <Count text={"average"} value={(good-bad)/(good+neutral+bad)} />
-      <Positive good={good} neutral={neutral} bad={bad}/>
+      <StatisticLine text={"good"} value={good} />
+      <StatisticLine text={"neutral"} value={neutral} />
+      <StatisticLine text={"bad"} value={bad} />
+      <StatisticLine text={"average"} value={(good-bad)/(good+neutral+bad)} />
+      <StatisticLine text={"positive"} value={(good/(good+neutral+bad))*100}/>
     </div>
   )
 }
