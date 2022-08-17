@@ -1,1 +1,1 @@
-# web-development-exercises
+folder of web development exercises
