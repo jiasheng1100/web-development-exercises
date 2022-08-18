@@ -1,0 +1,1 @@
+This is the final version of the courseinfo application. For detailed steps see commit history.
