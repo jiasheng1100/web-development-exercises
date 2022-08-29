@@ -8,16 +8,23 @@ const App = () => {
 
   //an event handler to the form element
   const addName = (event) => {    
-    event.preventDefault()    
-    const personObject = {
-      name: newName
-    } 
+    event.preventDefault() 
 
-    //use concat array method to avoid mutating state directly
-    setPersons(persons.concat(personObject))
-
-    setNewName(' ')
-
+    //prevent user from being able to add names that already exist in the phonebook
+    if (persons.findIndex(person => person.name===newName) != -1){
+      window.alert(`${newName} is already added to phonebook`)  
+    }
+    else
+    {
+      const personObject = {
+        name: newName
+      } 
+  
+      //use concat array method to avoid mutating state directly
+      setPersons(persons.concat(personObject))
+  
+      setNewName(' ')
+    }
   }
 
   //an event handler that synchronizes the changes made to input with the component's state
