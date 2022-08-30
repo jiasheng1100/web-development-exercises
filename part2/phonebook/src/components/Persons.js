@@ -10,4 +10,4 @@ const Persons = ({newFilter, persons}) => {
     </>
 }
 
-  export default Persons
+export default Persons
