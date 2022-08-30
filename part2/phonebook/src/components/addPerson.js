@@ -1,5 +1,3 @@
-import React from 'react'
-
 const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) => (event) => {    
     event.preventDefault() 
 
