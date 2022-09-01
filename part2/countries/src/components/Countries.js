@@ -2,6 +2,7 @@ import React from 'react'
 import Button from './Button'
 
 const Countries = ({newFilter, countries, setter}) => {
+  if (newFilter !== ''){
     const countriesToShow = countries.filter(
       country => country.name.common.toLowerCase().indexOf(newFilter.toLowerCase()) !== -1
       )
@@ -14,11 +15,13 @@ const Countries = ({newFilter, countries, setter}) => {
       return <>
       {countriesToShow.map(country => 
         <div key={country.name.official}>
-          {country.name.common} <Button text={"show"} handler={() => showCountry(country)}/>
+          {country.name.common} <Button text={"show"} handler={()=>setter(country.name.common)}/>
         </div>
       )}
       </>
-    }      
+    }
+  }
+      
 }
 
 const showCountry = (country) => (
@@ -32,6 +35,7 @@ const showCountry = (country) => (
         <li key={language}> {language}</li>
       )} 
     </ul>
+    <div>{country.flag}</div>
   </>
 )
 

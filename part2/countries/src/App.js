@@ -8,7 +8,6 @@ function App() {
   const [newFilter, setNewFilter] = useState('')
 
   const hook = () => {
-    console.log('effect')
     axios
       .get('https://restcountries.com/v3.1/all')
       .then(response => { setCountries(response.data) })
@@ -18,7 +17,7 @@ function App() {
   return (
     <div>
       <Form text={"find countries"} value={newFilter} setter={setNewFilter} />
-      <Countries newFilter={newFilter} countries={countries} />
+      <Countries newFilter={newFilter} countries={countries} setter={setNewFilter} />
     </div>  
   )
 }
