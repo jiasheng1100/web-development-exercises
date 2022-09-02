@@ -1,4 +1,7 @@
-const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) => (event) => {    
+import personService from '../services/persons'
+
+const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) => 
+  (event) => {    
     event.preventDefault() 
 
     //prevent user from being able to add names that already exist in the phonebook
@@ -10,14 +13,17 @@ const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) 
       const personObject = {
         name: newName,
         number: newNum
-      } 
-  
-      //use concat array method to avoid mutating state directly
+    } 
+
+    //save the added person object to backend server
+    personService
+    .create(personObject)
+    .then(response => {
       setPersons(persons.concat(personObject))
-  
       setNewName('')
       setNewNum('')
-    }
+    })
   }
+}
 
 export default addPerson
