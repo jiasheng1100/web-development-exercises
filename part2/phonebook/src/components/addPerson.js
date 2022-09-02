@@ -13,17 +13,17 @@ const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) 
       const personObject = {
         name: newName,
         number: newNum
-    } 
+      } 
 
-    //save the added person object to backend server
-    personService
-    .create(personObject)
-    .then(response => {
-      setPersons(persons.concat(personObject))
-      setNewName('')
-      setNewNum('')
-    })
+      //save the added person object to backend server
+      personService
+      .create(personObject)
+      .then(response => {
+        setPersons(persons.concat(personObject))
+        setNewName('')
+        setNewNum('')
+      })
+    }
   }
-}
 
 export default addPerson

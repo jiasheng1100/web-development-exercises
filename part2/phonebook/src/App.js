@@ -28,7 +28,7 @@ const App = () => {
         <Button text={"add"} handler={addPerson(persons, newName, newNum, setNewName, setNewNum, setPersons)} />
       </form>
       <h3>Numbers</h3>
-        <Persons newFilter={newFilter} persons={persons} />
+        <Persons newFilter={newFilter} persons={persons} setPersons={setPersons} />
     </div>
   )
 }
