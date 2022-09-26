@@ -4,9 +4,20 @@ const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) 
   (event) => {    
     event.preventDefault() 
 
+    let personIndex = persons.findIndex(person => person.name===newName)
     //prevent user from being able to add names that already exist in the phonebook
-    if (persons.findIndex(person => person.name===newName) !== -1){
-      window.alert(`${newName} is already added to phonebook`)  
+    if (personIndex !== -1){
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`))
+      {
+        const changedPerson = {...persons[personIndex], number: newNum}
+        personService
+          .update(changedPerson.id, changedPerson)
+          .then(response =>{
+            setPersons(persons.map(person => person.id === changedPerson.id ? response : person))
+            setNewName('')
+            setNewNum('')
+          })
+      }
     }
     else
     {
