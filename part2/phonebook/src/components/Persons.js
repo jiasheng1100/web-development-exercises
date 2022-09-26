@@ -8,17 +8,23 @@ const Persons = ({newFilter, persons, setPersons}) => {
       ? persons
       : persons.filter(person => person.name.toLowerCase().indexOf(newFilter.toLowerCase()) !== -1)
     return <>
-      {personsToShow.map(person => <div key={person.name}>{person.name} {person.number} <Button text={"delete"} handler={() => deletePerson(person.id, persons, setPersons)}/></div>)}
+      {personsToShow.map(person => <div key={person.name}>{person.name} {person.number} <Button text={"delete"} handler={deletePerson(person.id, person.name, persons, setPersons)}/></div>)}
     </>
 }
 
-const deletePerson = (id, persons, setPersons) => {
-  personService
-    .remove(id)
-    .then(setPersons(persons.filter(person => person.id !== id)))
-    .catch(error=>{
-      console.log(error)
-    })
-}
+const deletePerson = (id, name, persons, setPersons) => (
+  (event) => {    
+    event.preventDefault() 
+    if (window.confirm(`Delete '${name}'?`)){
+      personService
+        .remove(id)
+        .then(setPersons(persons.filter(person => person.id !== id)))
+        .catch(error=>{
+          console.log(error)
+        })
+    }  
+  }
+)
+
 
 export default Persons
