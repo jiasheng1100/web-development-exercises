@@ -1,6 +1,6 @@
 import personService from '../services/persons'
 
-const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) => 
+const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons, setMessage) => 
   (event) => {    
     event.preventDefault() 
 
@@ -17,6 +17,9 @@ const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) 
             setNewName('')
             setNewNum('')
           })
+
+          setMessage(`Updated '${newName}'`)        
+          setTimeout(() => { setMessage(null) }, 2500)
       }
     }
     else
@@ -34,6 +37,9 @@ const addPerson = (persons, newName, newNum, setNewName, setNewNum, setPersons) 
         setNewName('')
         setNewNum('')
       })
+
+      setMessage(`Added '${newName}'`)        
+      setTimeout(() => { setMessage(null) }, 2500)
     }
   }
 

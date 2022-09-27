@@ -8,7 +8,11 @@ const Persons = ({newFilter, persons, setPersons}) => {
       ? persons
       : persons.filter(person => person.name.toLowerCase().indexOf(newFilter.toLowerCase()) !== -1)
     return <>
-      {personsToShow.map(person => <div key={person.name}>{person.name} {person.number} <Button text={"delete"} handler={deletePerson(person.id, person.name, persons, setPersons)}/></div>)}
+      {personsToShow.map(person => 
+      <div className='person' key={person.name}>
+        {person.name} {person.number} 
+        <Button text={"delete"} handler={deletePerson(person.id, person.name, persons, setPersons)}/>
+      </div>)}
     </>
 }
 
