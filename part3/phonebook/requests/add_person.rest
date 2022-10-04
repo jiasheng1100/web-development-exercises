@@ -24,3 +24,13 @@ Content-Type: application/json
     "number": "547567",
     "hobby": "vollyball"
 }
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "someone",
+    "number": "34567092"
+}
+
